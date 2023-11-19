@@ -4,7 +4,7 @@ import datetime
 import json
 import argparse
 
-class aoc_helper():
+class aoc_downloader():
     def __init__(self, args) -> None:
         self.ROOT_DIR = Path(__file__).parent # the advent-of-code-2023 folder
         self.TODAY = datetime.date.today()
@@ -65,4 +65,4 @@ if __name__ == "__main__":
     parser.add_argument('-d', '--day', help="force download of specific day", default=None, required=False)
     parser.add_argument('-y', '--year', help="force download of specific year", default=None, required=False)
     args = parser.parse_args()
-    aoc_helper(args=args)
+    aoc_downloader(args=args)
