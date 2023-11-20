@@ -16,14 +16,15 @@ The [session cookie](https://github.com/wimglenn/advent-of-code-wim/issues/1) ne
 }
 ```
 
-Running `python path/to/aoc_downloader.py` creates a directory with the input file and an empty python script inside.
+Running `python path/to/aoc_downloader.py` creates a directory with the input file inside.
 
 Passing the optional parameter `--day` or `--year` forces the download for a specific date, otherwise it defaults to the current date (The month is always assumed to be December).
+The optional parameter `--py` adds an empty python file to the created directory.
 
 For example, running
 
 ```
-python path/to/aoc_downloader.py --day 17 --year 2021
+python path/to/aoc_downloader.py --day 17 --year 2021 --py
 ```
 
 creates the folder and files as follows:

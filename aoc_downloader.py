@@ -14,7 +14,8 @@ class aoc_downloader():
         
         self.create_folder()
         self.get_input()
-        self.create_new_py()
+        if self.args.py:
+            self.create_new_py()
     
     def get_session_cookie(self) :
         try:
@@ -64,5 +65,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Input downloader for Advent of Code")
     parser.add_argument('-d', '--day', help="force download of specific day", default=None, required=False)
     parser.add_argument('-y', '--year', help="force download of specific year", default=None, required=False)
+    parser.add_argument('--py', help='set to create an empty python file', action='store_true', default=False, required=False)
     args = parser.parse_args()
     aoc_downloader(args=args)
