@@ -7,10 +7,10 @@ def part1and2(inputdata):
     
     for card in inputdata:
         regex_matches = re.search(r'Card\s+\d+:\s(.*)\s\|\s(.*)', card)
-        winning_numbers = regex_matches[1].split(" ")
-        own_numbers = regex_matches[2].split(" ")
+        winning_numbers = regex_matches[1].split()
+        own_numbers = regex_matches[2].split()
         
-        matches = sum([1 if number.isdigit() and number in winning_numbers else 0 for number in own_numbers]) # count number of matches
+        matches = sum([1 if number in winning_numbers else 0 for number in own_numbers]) # count number of matches
         points_total += 2**(matches-1) if matches > 0 else 0 # points = 2^(matches-1) except if matches == 0
         matches_per_game.append(matches)
     print(f"the number of total points won is: {points_total}")
