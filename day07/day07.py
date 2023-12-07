@@ -14,10 +14,10 @@ def find_type(hand: str, part2=False):
             card_count[card] += 1
         else:
             card_count[card] = 1
-    if part2 and 'J' in card_count.keys() and len(card_count) != 1:
-        max_card_key = max(card_count, key=card_count.get)
-        card_count[max_card_key] += card_count['J']
+    if part2 and 'J' in card_count.keys() and len(card_count) > 1: # add the jokers to the card with the highest count
+        nr_of_jokers = card_count['J']
         del card_count['J']
+        card_count[max(card_count, key=card_count.get)] += nr_of_jokers
     match len(card_count):
         case 5: # high-card
             return 0
@@ -41,9 +41,7 @@ def part1(inputdata):
     tuples = [[find_type(hand), ''.join([mapping_1[card] for card in hand]), hand, bid] for hand, bid in zip(hands, bids)]
     sorted_by_type = sorted(tuples, key=lambda x: (x[0], x[1]))
     
-    print(sorted_by_type)
-    
-    print(sum([(index+1) * tuple[3] for index, tuple in enumerate(sorted_by_type)]))
+    print(f"PART 1: the total winnings are: {sum([(index+1) * tuple[3] for index, tuple in enumerate(sorted_by_type)])}")
     
 def part2(inputdata):
     hands = [line[:5] for line in inputdata]
@@ -52,14 +50,12 @@ def part2(inputdata):
     tuples = [[find_type(hand, part2=True), ''.join([mapping_2[card] for card in hand]), hand, bid] for hand, bid in zip(hands, bids)]
     sorted_by_type = sorted(tuples, key=lambda x: (x[0], x[1]))
     
-    print(sorted_by_type)
-    
-    print(sum([(index+1) * tuple[3] for index, tuple in enumerate(sorted_by_type)]))
+    print(f"PART 2: the total winnings are: {sum([(index+1) * tuple[3] for index, tuple in enumerate(sorted_by_type)])}")
     
     
 
 if __name__ == '__main__':
-    inputfile = open(r'C:\Users\Daniel\Github\advent-of-code-2023\day07\test.txt', 'r')
+    inputfile = open(r'C:\Users\Daniel\Github\advent-of-code-2023\day07\input.txt', 'r')
     inputdata = np.asarray([line.strip() for line in inputfile])
     part1(inputdata)
     part2(inputdata)
