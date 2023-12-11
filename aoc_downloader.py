@@ -3,6 +3,7 @@ from pathlib import Path
 import datetime
 import json
 import argparse
+import jinja2
 
 class aoc_downloader():
     def __init__(self, args) -> None:
@@ -11,6 +12,7 @@ class aoc_downloader():
         self.args = args
         self.day = self.args.day if self.args.day is not None else self.TODAY.day
         self.year = self.args.year if self.args.year is not None else self.TODAY.year
+        self.template = self.read_template()
         
         self.create_folder()
         self.get_input()
@@ -24,6 +26,15 @@ class aoc_downloader():
         except:
             print(f"reading config.json failed!")
             raise
+        
+    def read_template(self):
+        try:
+            with open('py_template.txt', 'r') as template_file: template_str = template_file.read()
+        except:
+            print(f"reading python template failed!")
+            raise
+        template = jinja2.Template(template_str)
+        return template
     
     def create_folder(self):
         folder_path = self.ROOT_DIR / f"day{self.day:0>2}"
@@ -53,9 +64,12 @@ class aoc_downloader():
         return
     
     def create_new_py(self):
+        template_data = {
+            'day': f"{self.day:0>2}"
+        }
         py_file_path = self.ROOT_DIR / f"day{self.day:0>2}" / f"day{self.day:0>2}.py"
         if not py_file_path.is_file():
-            py_file_path.open("w", encoding="utf-8")
+            with open(py_file_path, "w", encoding="utf-8") as file: file.write(self.template.render(template_data))
             print(f"created python file at {py_file_path}")
             return
         print("python file for current day already exists")
