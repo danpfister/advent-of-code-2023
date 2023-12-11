@@ -16,10 +16,12 @@ The [session cookie](https://github.com/wimglenn/advent-of-code-wim/issues/1) ne
 }
 ```
 
+Additionally, the path inside `py_template.txt` should be changed to fit the path to the advent-of-code directory.
+
 Running `python path/to/aoc_downloader.py` creates a directory with the input file inside.
 
 Passing the optional parameter `--day` or `--year` forces the download for a specific date, otherwise it defaults to the current date (The month is always assumed to be December).
-The optional parameter `--py` adds an empty python file to the created directory.
+The optional parameter `--py` adds a templated python file to the created directory.
 
 For example, running
 
