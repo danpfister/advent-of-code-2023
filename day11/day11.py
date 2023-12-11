@@ -27,12 +27,13 @@ def part1and2(inputdata):
     sum_lengths_1 = 0
     sum_lengths_2 = 0
     # go over each possible galaxy pair and divide by 2 (each pair is counted twice)
+    # runs in O(n^2)
     for galaxy_1 in galaxies:
         for galaxy_2 in galaxies:
             sum_lengths_1 += find_distance(galaxy_1, galaxy_2, empty)
             sum_lengths_2 += find_distance(galaxy_1, galaxy_2, empty, part2=True)
             
-    print(f"PART 1: the sum of the lenghts between the galaxies is: {int(sum_lengths_1/2)}")
+    print(f"PART 1: the sum of the lengths between the galaxies is: {int(sum_lengths_1/2)}")
     print(f"PART 2: the sum of the lengths between the galaxies is: {int(sum_lengths_2/2)}")
 
 if __name__ == '__main__':
