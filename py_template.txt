@@ -5,7 +5,7 @@ def part1(inputdata): pass
 def part2(inputdata): pass
 
 if __name__ == '__main__':
-    inputfile = open(r'C:\Users\Daniel\Github\advent-of-code-2023\day{{ day }}\input.txt', 'r')
+    inputfile = open(r'{{ root_folder }}\day{{ day }}\input.txt', 'r')
     inputdata = np.asarray([line.strip() for line in inputfile])
     part1(inputdata)
     part2(inputdata)

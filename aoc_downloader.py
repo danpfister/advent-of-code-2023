@@ -65,6 +65,7 @@ class aoc_downloader():
     
     def create_new_py(self):
         template_data = {
+            'root_folder': self.ROOT_DIR,
             'day': f"{self.day:0>2}"
         }
         py_file_path = self.ROOT_DIR / f"day{self.day:0>2}" / f"day{self.day:0>2}.py"

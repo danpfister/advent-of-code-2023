@@ -6,7 +6,9 @@ Solving the [Advent of Code 2023](https://adventofcode.com/2023) in Python.
 
 The `aoc_downloader.py` can be used to create a folder and download the input for a specific day.
 
-### Usage
+### Setup
+
+Place `aoc_downloader.py` in your AOC folder and install the dependencies with `pip install -r requirements.txt`.
 
 The [session cookie](https://github.com/wimglenn/advent-of-code-wim/issues/1) needs to be stored in a file `config.json` in this format:
 
@@ -16,7 +18,7 @@ The [session cookie](https://github.com/wimglenn/advent-of-code-wim/issues/1) ne
 }
 ```
 
-Additionally, the path inside `py_template.txt` should be changed to fit the path to the advent-of-code directory.
+### Usage
 
 Running `python path/to/aoc_downloader.py` creates a directory with the input file inside.
 
